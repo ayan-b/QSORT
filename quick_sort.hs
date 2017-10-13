@@ -8,6 +8,7 @@ module QSORT where
 
 quicksort :: [Int] -> [Int]
 quicksort [] = []
-quicksort (x:xs) = smaller ++ x : greater
+quicksort (x:xs) = smaller ++ equal ++ greater
     where smaller = quicksort $ (filter (<x) xs)
+          equal = filter (==x) (x:xs)
           greater = quicksort $ (filter (>x) xs)
