@@ -23,11 +23,21 @@ int partition (int arr[], int low, int high){
 }
 
 void quickSort(int arr[], int low, int high){
-    if (low < high){
-        int pi = partition(arr, low, high);
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
-    }
+    int pa;
+    while(low < high)
+    {
+      pa = partition(arr, low, high);
+      if(pa - 1 < high - pa) //recurse into the smaller halve
+      {
+        quickSort(arr, low, pa - 1);
+        low = pa + 1;
+       }
+       else{
+         quickSort(arr, pa + 1, high);
+         high = pa - 1;
+         }
+       }
+
 }
 
 void printArray(int arr[], int size){
