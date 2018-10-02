@@ -1,29 +1,51 @@
 public class QuickSort
-{   public static void main(String args[])
-    {   int a[]={5,7,4,3,6,8,9,1,2,0};
-        QuickSort obj=new QuickSort();
-        for(int i=0; i<a.length; i++) System.out.print(a[i]+" "); System.out.println();
-        obj.quickSort(a,0,a.length-1);
-        for(int i=0; i<a.length; i++) System.out.print(a[i]+" "); System.out.println();
-    }
-    void quickSort(int array[], int start, int end)
-    {   int i = start;                          
-        int k = end;                         
-        if (end - start >= 1)
-        {   int pivot = array[start];       
-            while (k > i)
-            {   while (array[i] <= pivot && i <= end && k > i) i++;      
-                while (array[k] > pivot && k >= start && k >= i) k--;                                        
-                if (k > i) swap(array, i, k);    
-           } 
-           swap(array, start, k);  
-           quickSort(array, start, k - 1); // quicksort the left partition
-           quickSort(array, k + 1, end);   // quicksort the right partition
-        }
-    }//quickSort()
-    void swap(int array[], int index1, int index2) 
-    {   int temp = array[index1];           
-        array[index1] = array[index2];      
-        array[index2] = temp;        
-    }//swap()
-}//class
+{   
+    // QUICK_SORT 
+	public static void quickSort(int[] input) {
+		qs(input,0,input.length-1);
+	}
+	public static void qs(int []a,int si,int ei){
+		if(si>=ei)
+			return;
+		int c=partition(a,si,ei);
+		qs(a,si,c-1);
+		qs(a,c+1,ei);
+	}
+
+	// PARTITION
+	public static int partition(int[]a,int si,int ei){
+		int x=a[si],count=0;
+		for(int i=si+1;i<=ei;i++){
+			if(a[i]<x)
+				count++;
+		}
+		int temp=a[si+count];
+		a[si+count]=x;
+		a[si]=temp;
+		int i=si,j=ei;
+		while(i<si+count && j>si+count){
+			if(a[i]<x && a[j]>=x)
+			{
+				i++;
+				j--;
+			}
+			else if(a[i]<x && a[j]<x)
+				i++;
+			else if(a[i]>=x && a[j]>=x)
+				j--;
+			else
+			{
+				int t=a[i];
+				a[i]=a[j];
+				a[j]=t;
+			}  
+		}
+		return si+count;
+	}
+	public static void main(String[] args) {
+		int arr[]={5,34,78,4,2};
+		quickSort(arr);   // array 'arr' will be sorted
+		for(int i=0;i<arr.length;i++)
+			System.out.print(arr[i]+" ");
+	}
+}//CLASS
