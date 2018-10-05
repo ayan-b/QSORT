@@ -1,13 +1,20 @@
-class QuickSort
-{
+/**Comments by SpaceDigi
+ * Please refactor this code
+ * Please change view for your codestyle
+ * Please change your codestyle(for ksklee)
+ * This code aren't working, it's can't be compiling
+ * You have two name of classes and there are equals. So, it's must not be in one file or one directory
+ * Please read again java naming classes, packaging, etc.
+ * With love, by SpaceDigi
+ */
+
+class QuickSort {
     
-    int partition(int arr[], int low, int high)
-    {
+    int partition(int arr[], int low, int high) {
         int pivot = arr[high]; 
         int i = (low-1); // index of smaller element
-        for (int j=low; j<high; j++)
-        {
-            
+        for (int j=low; j<high; j++) {
+
             if (arr[j] <= pivot)
             {
                 i++;
@@ -32,7 +39,7 @@ class QuickSort
       arr[] --> Array to be sorted,
       low  --> Starting index,
       high  --> Ending index */
-    void sort(int arr[], int low, int high)
+   public void sort(int arr[], int low, int high)
     {
         if (low < high)
         {
@@ -69,7 +76,6 @@ class QuickSort
         printArray(arr);
     }
 }
-=======
 
 /**
  * @author ksklee
@@ -87,18 +93,18 @@ public class QuickSort {
 				arr[j] = temp;
 			}
 		}
-		
+
 		int temp = arr[i+1];
 		arr[i+1] = arr[high];
 		arr[high] = temp;
-			
+
 		return i+1;
 	}
 
 	void sort(int arr[], int low, int high){
 		if (low < high){
 			int pi = partition(arr, low, high);
-		
+
 			sort(arr, low, pi-1);
 			sort(arr, pi+1, high);
 		}
@@ -114,17 +120,17 @@ public class QuickSort {
 	public static void main(String[] args) {
 		int arr[] = {90, 57, 68, 89, 11, 35};
 		int n = arr.length;
-		
+
 		System.out.println("Before:");
 		printArray(arr);
-		
+
 		QuickSort quicksort = new QuickSort();
 		quicksort.sort(arr,  0, n-1);
-		
+
 		System.out.println("After:");
 		printArray(arr);
 	}
-	
+
 
 }
 
